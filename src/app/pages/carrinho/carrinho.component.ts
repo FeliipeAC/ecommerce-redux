@@ -32,7 +32,6 @@ export class CarrinhoComponent implements OnInit {
   }
 
   removerProduto(element: ItemCarrinhoModel): void {
-    // console.log('remove: ', element);
     this.dialog.open(DialogConfirmacaoComponent, {
       width: '380px',
       data: {
@@ -50,6 +49,18 @@ export class CarrinhoComponent implements OnInit {
   }
 
   clear(): void {
-    this.store.dispatch(Clear());
+    this.dialog.open(DialogConfirmacaoComponent, {
+      width: '380px',
+      data: {
+        titulo: 'Esvaziar carrinho',
+        texto: 'Deseja realmente excluir todos os produtos do carrinho ?'
+      }
+    })
+      .beforeClosed()
+      .subscribe(res => {
+        if (res) {
+          this.store.dispatch(Clear());
+        }
+      });
   }
 }
