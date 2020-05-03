@@ -18,7 +18,7 @@ export class CarrinhoComponent implements OnInit {
 
   data: CarrinhoModel[];
 
-  displayedColumns: string[] = ['imagem', 'titulo', 'preco', 'quantidade', 'subtotal', 'acoes'];
+  displayedColumns: string[] = ['produto', 'preco', 'quantidade', 'subtotal', 'acoes'];
 
   carrinho$: Observable<CarrinhoModel>;
 
