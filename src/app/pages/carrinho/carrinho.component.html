@@ -12,13 +12,6 @@
             </button>
         </div>
         <mat-table [dataSource]="(carrinho$ | async).items">
-            <!-- <ng-container matColumnDef="imagem">
-                <mat-header-cell *matHeaderCellDef> </mat-header-cell>
-                <mat-cell *matCellDef="let element">
-
-                </mat-cell>
-                <mat-footer-cell *matFooterCellDef>Total</mat-footer-cell>
-            </ng-container> -->
 
             <ng-container matColumnDef="produto">
                 <mat-header-cell *matHeaderCellDef> Produto </mat-header-cell>

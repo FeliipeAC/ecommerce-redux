@@ -12,13 +12,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DialogConfirmacaoComponent } from './dialog-confirmacao/dialog-confirmacao.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NotificacaoComponent } from './notificacao/notificacao.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     StoreListComponent,
     ProductCardComponent,
-    DialogConfirmacaoComponent
+    DialogConfirmacaoComponent,
+    NotificacaoComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +33,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCardModule,
     MatBadgeModule,
     MatDialogModule,
+    MatSnackBarModule,
+
   ],
   exports: [
     HeaderComponent,
@@ -40,8 +45,8 @@ import { MatDialogModule } from '@angular/material/dialog';
   entryComponents: [
     DialogConfirmacaoComponent
   ],
-    providers: [
-      ProdutosService
-    ]
+  providers: [
+    ProdutosService
+  ]
 })
 export class ComponentsModule { }

@@ -1,0 +1,7 @@
+<div class="notificacao">
+    <mat-icon>{{getIcon()}}</mat-icon>
+    <p>{{data.notificacao.texto}}</p>
+    <button mat-button (click)="action()">
+        {{data.notificacao.botao ? data.notificacao.botao.texto : 'Entendi'}}
+    </button>
+</div>

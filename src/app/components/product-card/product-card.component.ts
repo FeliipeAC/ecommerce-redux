@@ -1,3 +1,5 @@
+import { TipoNotificacaoModel } from './../../models/tipo-notificacao-model';
+import { NotificacaoService } from './../../services/notificacao.service';
 import { ItemCarrinhoModel } from './../../models/item-carrinho-model';
 import { Add } from './../../actions/carrinho-action';
 import { CarrinhoModel } from './../../models/carrinho-model';
@@ -16,7 +18,9 @@ export class ProductCardComponent implements OnInit {
 
   showInfo = false;
 
-  constructor(private store: Store<CarrinhoModel>) { }
+  constructor(
+    private store: Store<CarrinhoModel>,
+    private notificacaoService: NotificacaoService) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +28,19 @@ export class ProductCardComponent implements OnInit {
   add(): void {
     const item = new ItemCarrinhoModel(this.product);
     this.store.dispatch(Add(item));
+
+    const obj: TipoNotificacaoModel = {
+      tipo: 'success',
+      notificacao: {
+        texto: 'Produto adicionado ao carrinho.',
+        botao: {
+          texto: 'Ver carrinho',
+          link: '/carrinho'
+        }
+      }
+    };
+
+    this.notificacaoService.showNotificacao(obj);
   }
 
 }

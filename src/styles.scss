@@ -36,3 +36,35 @@ body {
     animation-name: fadeIn;
     animation-duration: .4s;
 }
+
+.mat-snack-bar-container {
+    border: solid 1px;
+    padding: 8px 16px !important;
+
+    &.success {
+        background-color: #ecf6da;
+        border-color: #d0ee94;
+
+        mat-icon {
+            color: #60900a;
+        }
+    }
+
+    &.warning {
+        border-color: #eae8c5;
+        background-color: #f4f3d2;
+
+        mat-icon {
+            color: #b59022;
+        }
+    }
+
+    &.error {
+        border-color: #ead3cb;
+        background-color: #f6e1da;
+
+        mat-icon {
+            color: #af583c;
+        }
+    }
+}
