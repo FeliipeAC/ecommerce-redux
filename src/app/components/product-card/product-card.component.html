@@ -1,0 +1,46 @@
+<mat-card (mouseenter)="showInfo = true" (mouseleave)="showInfo = false">
+    <div>
+        <figure>
+            <img [src]="product.imagem" [alt]="product.titulo">
+        </figure>
+        <mat-card-title>{{product.titulo}}</mat-card-title>
+        <h2>{{product.preco | currency: 'BRL'}}</h2>
+    </div>
+
+    <div class="info"  [ngStyle]="{'opacity': showInfo ? '1' : '0'}">
+        <h2>{{product.titulo}}</h2>
+
+        <div class="items">
+            <div>
+                <mat-icon>android</mat-icon>
+                {{product.info.android}}
+            </div>
+            <div>
+                <mat-icon>smartphone</mat-icon>
+                {{product.info.tela}}
+            </div>
+            <div>
+                <mat-icon>sd_storage</mat-icon>
+                {{product.info.armazenamento}} Gb
+            </div>
+            <div>
+                <mat-icon>memory</mat-icon>
+                {{product.info.memoria}} Gb
+            </div>
+            <div>
+                <mat-icon>camera_front</mat-icon>
+                {{product.info.camera_frontal}} pixels
+            </div>
+            <div>
+                <mat-icon>camera_rear</mat-icon>
+                {{product.info.camera_traseira}} pixels
+            </div>
+        </div>
+
+        <button mat-flat-button color="primary" (click)="add()">
+            <mat-icon>add_shopping_cart</mat-icon>
+            Adicionar ao carrinho
+        </button>
+    </div>
+
+</mat-card>

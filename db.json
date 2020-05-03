@@ -1,0 +1,79 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "titulo": "Xiaomi Redmi Note 7 64GB 4GB RAM Preto",
+            "fabricante": "Xiaomi",
+            "preco": 1199,
+            "imagem": "assets/images/xiaomi_redmi_note_7_preto.jpg",
+            "info": {
+                "armazenamento": 64,
+                "memoria": 4,
+                "android": "9",
+                "camera_frontal": 13,
+                "camera_traseira": 48,
+                "tela": 6.3
+            }
+        },
+        {
+            "id": 2,
+            "titulo": "Xiaomi Redmi Note 8 64GB 4GB RAM Preto",
+            "fabricante": "Xiaomi",
+            "preco": 1439,
+            "imagem": "assets/images/xiaomi_redmi_note_8_preto.jpg",
+            "info": {
+                "armazenamento": 64,
+                "memoria": 4,
+                "android": "9",
+                "camera_frontal": 13,
+                "camera_traseira": 48,
+                "tela": 6.3
+            }
+        },
+        {
+            "id": 3,
+            "titulo": "Xiaomi Mi 9 64GB 4GB RAM Preto",
+            "fabricante": "Xiaomi",
+            "preco": 2249,
+            "imagem": "assets/images/xiaomi_mi_9_preto.jpg",
+            "info": {
+                "armazenamento": 64,
+                "memoria": 6,
+                "android": "10",
+                "camera_frontal": 20,
+                "camera_traseira": 48,
+                "tela": 6.39
+            }
+        },
+        {
+            "id": 4,
+            "titulo": "Samsung Galaxy S9 SM-G9600 128GB",
+            "fabricante": "Samsung",
+            "preco": 1849,
+            "imagem": "assets/images/samsung_galaxy_s9_preto.jpg",
+            "info": {
+                "armazenamento": 128,
+                "memoria": 4,
+                "android": "10",
+                "camera_frontal": 8,
+                "camera_traseira": 12,
+                "tela": 5.8
+            }
+        },
+        {
+            "id": 5,
+            "titulo": "Samsung Galaxy S10 128GB",
+            "fabricante": "Samsung",
+            "preco": 2699,
+            "imagem": "assets/images/samsung_galaxy_s10_preto.jpg",
+            "info": {
+                "armazenamento": 128,
+                "memoria": 8,
+                "android": "10",
+                "camera_frontal": 10,
+                "camera_traseira": 12,
+                "tela": 6.1
+            }
+        }
+    ]
+}

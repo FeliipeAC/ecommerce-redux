@@ -1,0 +1,87 @@
+.mat-card-header {
+    flex-direction: column;
+}
+
+mat-card {
+    padding: 24px;
+}
+
+mat-card-title {
+    font-size: 20px;
+}
+
+figure {
+    height: 140px;
+    margin: 0 0 12px 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 24px;
+    background-color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: opacity .4s ease-in-out;
+
+    .items {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        div {
+            display: flex;
+            align-items: center;
+            width: calc(50% - 16px);
+            margin-bottom: 10px;
+            padding: 0 8px;
+
+            mat-icon {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    h2 {
+        font-size: 16px;
+        text-align: center;
+        margin: 0;
+    }
+
+    button {
+
+        mat-icon {
+            margin-right: 8px;
+            width: 21px;
+            height: 21px;
+            line-height: 21px;
+            font-size: 21px;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: .4s;
+}

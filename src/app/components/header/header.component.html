@@ -1,0 +1,56 @@
+<header>
+    <div>
+        <div class="logoname">
+            <a [routerLink]="['/home']">
+                <h1>Smartphones</h1>
+            </a>
+        </div>
+        <div class="cart">
+            <button mat-icon-button color="primary" [matBadge]="(carrinho$ | async).items.length"
+                matBadgeColor="primary" [matMenuTriggerFor]="menuCarrinho">
+                <mat-icon svgIcon="icon-shopping-cart"></mat-icon>
+            </button>
+            <mat-menu #menuCarrinho="matMenu">
+                <ng-container *ngIf="(carrinho$ | async).items as items">
+                    <div class="resume-carrinho">
+                        <div class="header">
+                            <h2>Meu carrinho</h2>
+                            <span *ngIf="(carrinho$ | async).items.length > 0">
+                                {{(carrinho$ | async).items.length}}
+                                {{(carrinho$ | async).items.length > 1 ? 'itens' : 'item'}} no carinho</span>
+                        </div>
+                        <ng-container *ngIf="items.length > 0; else empty">
+
+                            <div class="items">
+                                <ng-container *ngFor="let item of items; let last = last; let index = index">
+                                    <div class="item" [class.border]="items.length > 1 && index === 0"
+                                        *ngIf="index < 2">
+                                        <figure>
+                                            <img [src]="item.produto.imagem" [alt]="item.produto.titulo">
+                                        </figure>
+                                        <p>{{item.produto.titulo}}</p>
+                                        <span>{{item.produto.preco | currency : 'BRL'}}</span>
+                                    </div>
+                                </ng-container>
+                            </div>
+
+                            <div class="actions">
+                                <button mat-button color="primary" (click)="navigateToCart()">Ver carrinho</button>
+                                <span>Total: <b>{{(carrinho$ | async).total | currency: 'BRL'}}</b></span>
+                            </div>
+                        </ng-container>
+                        <ng-template #empty>
+                            <div class="empty">
+                                Seu carrinho está vazio
+                                <mat-icon>
+                                    sentiment_very_dissatisfied
+                                </mat-icon>
+                            </div>
+                        </ng-template>
+                    </div>
+                </ng-container>
+
+            </mat-menu>
+        </div>
+    </div>
+</header>

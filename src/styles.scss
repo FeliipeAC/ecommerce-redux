@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.container {
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.mat-menu-panel {
+    max-width: 100% !important;
+    min-width: 200px !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: .4s;
+}
