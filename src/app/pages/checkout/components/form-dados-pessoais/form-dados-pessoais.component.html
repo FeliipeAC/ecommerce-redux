@@ -1,0 +1,86 @@
+<div class="content">
+    <form [formGroup]="form">
+        <h2>Dados pessoais</h2>
+
+        <div class="box-form">
+
+            <div class="field w30" [class.invalid]="isInvalid('nome')">
+                <span>Nome</span>
+                <input matInput formControlName="nome" required>
+            </div>
+
+            <div class="field w50" [class.invalid]="isInvalid('sobrenome')">
+                <span>Sobrenome</span>
+                <input matInput formControlName="sobrenome">
+            </div>
+
+            <div class="field w20" [class.invalid]="isInvalid('aniversario')">
+                <span>Data de aniversário</span>
+                <input matInput formControlName="aniversario">
+            </div>
+
+            <div class="field w30" [class.invalid]="isInvalid('celular')">
+                <span>Celular</span>
+                <input matInput formControlName="celular">
+            </div>
+
+            <div class="field w50" [class.invalid]="isInvalid('email')">
+                <span>E-mail</span>
+                <input matInput formControlName="email">
+            </div>
+
+            <div class="field w20" [class.invalid]="isInvalid('sexo')">
+                <span>Sexo</span>
+                <mat-select formControlName="sexo">
+                    <mat-option value="feminino">Feminino</mat-option>
+                    <mat-option value="masculino">Masculino</mat-option>
+                    <mat-option value="outro">Outro</mat-option>
+                </mat-select>
+            </div>
+        </div>
+
+    </form>
+
+    <form [formGroup]="form.get('endereco')">
+        <h2>Endereço</h2>
+
+        <div class="box-form">
+            <div class="field w20" [class.invalid]="isInvalidEndereco('cep')">
+                <span>CEP</span>
+                <input matInput formControlName="cep" required maxlength="8">
+                <mat-spinner *ngIf="procurandoEndereco" class="fadeIn" diameter="22" color="primary"></mat-spinner>
+            </div>
+
+            <div class="field w50" [class.invalid]="isInvalidEndereco('rua')">
+                <span>Rua</span>
+                <input matInput formControlName="rua" readonly>
+            </div>
+
+            <div class="field w30" [class.invalid]="isInvalidEndereco('bairro')">
+                <span>Bairro</span>
+                <input matInput formControlName="bairro" readonly>
+            </div>
+
+            <div class="field w20" [class.invalid]="isInvalidEndereco('numero')">
+                <span>Número</span>
+                <input matInput type="number" formControlName="numero">
+            </div>
+
+            <div class="field w50" [class.invalid]="isInvalidEndereco('cidade')">
+                <span>Cidade</span>
+                <input matInput formControlName="cidade" readonly>
+            </div>
+
+            <div class="field w30" [class.invalid]="isInvalidEndereco('estado')">
+                <span>Estado</span>
+                <input matInput formControlName="estado" readonly>
+            </div>
+
+            <div class="field w50" [class.invalid]="isInvalidEndereco('complemento')">
+                <span>Complemento</span>
+                <input matInput formControlName="complemento">
+            </div>
+        </div>
+    </form>
+
+</div>

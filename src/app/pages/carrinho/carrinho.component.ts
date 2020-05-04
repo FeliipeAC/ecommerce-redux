@@ -36,7 +36,7 @@ export class CarrinhoComponent implements OnInit {
       width: '380px',
       data: {
         titulo: 'Excluir produto',
-        texto: 'Deseja realmente excluir o produto <b>' + element.produto.titulo + '</b> ?'
+        texto: 'Deseja realmente excluir o produto <b>' + element.produto.titulo + '</b> do carrinho?'
       }
     })
       .beforeClosed()

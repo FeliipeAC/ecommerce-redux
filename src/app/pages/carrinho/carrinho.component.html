@@ -11,53 +11,8 @@
                 Esvaziar carrinho
             </button>
         </div>
-        <mat-table [dataSource]="(carrinho$ | async).items">
-
-            <ng-container matColumnDef="produto">
-                <mat-header-cell *matHeaderCellDef> Produto </mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                    <figure>
-                        <img [src]="element.produto.imagem" [alt]="element.produto.titulo">
-                    </figure>
-                    {{element.produto.titulo}}
-                </mat-cell>
-                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="preco">
-                <mat-header-cell *matHeaderCellDef> Preço </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.produto.preco | currency : 'BRL'}} </mat-cell>
-                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="quantidade">
-                <mat-header-cell *matHeaderCellDef> Quantidade </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.quantidade}} </mat-cell>
-                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="subtotal">
-                <mat-header-cell *matHeaderCellDef> Subtoal </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{(element.produto.preco * element.quantidade) | currency : 'BRL'}}
-                </mat-cell>
-                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="acoes">
-                <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                    <button mat-icon-button matTooltip="Remover produto" matTooltipPosition="above"
-                        (click)="removerProduto(element)">
-                        <mat-icon>delete_outline</mat-icon>
-                    </button>
-                </mat-cell>
-                <mat-footer-cell *matFooterCellDef> {{(carrinho$ | async).total | currency: 'BRL'}} </mat-footer-cell>
-            </ng-container>
-
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
-        </mat-table>
+        <app-table-items-cart [data]="(carrinho$ | async)" (eventRemoverProduto)="removerProduto($event)">
+        </app-table-items-cart>
 
         <div class="bt-actions">
             <a mat-button routerLink="/home">

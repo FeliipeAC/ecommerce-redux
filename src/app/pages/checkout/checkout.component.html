@@ -1,0 +1,38 @@
+<div class="container">
+    <mat-horizontal-stepper #stepper [linear]="true">
+        <mat-step [stepControl]="formDadosPessoais" label="Informações pessoais" state="dados">
+            <!-- <ng-template matStepLabel></ng-template> -->
+            <app-form-dados-pessoais [form]="formDadosPessoais"></app-form-dados-pessoais>
+            <div class="bt-actions">
+                <button mat-flat-button color="primary" (click)="avancar()">Avançar</button>
+            </div>
+        </mat-step>
+
+        <mat-step label="Pagamento" state="pagamento">
+            <!-- <ng-template matStepLabel>Pagamento</ng-template> -->
+        </mat-step>
+
+        <mat-step label="Confirmação" state="confirmacao">
+        </mat-step>
+
+        <mat-step label="Finalizado" state="finalizado">
+        </mat-step>
+
+        <!-- Icon overrides. -->
+        <ng-template matStepperIcon="dados">
+            <mat-icon>person</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="pagamento">
+            <mat-icon>payment</mat-icon>
+        </ng-template>
+
+        <ng-template matStepperIcon="pagamento">
+            <mat-icon>ballot</mat-icon>
+        </ng-template>
+
+        <ng-template matStepperIcon="pagamento">
+            <mat-icon>done</mat-icon>
+        </ng-template>
+    </mat-horizontal-stepper>
+
+</div>

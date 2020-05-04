@@ -1,3 +1,4 @@
+import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { ProdutosService } from './../services/produtos.service';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +15,7 @@ import { DialogConfirmacaoComponent } from './dialog-confirmacao/dialog-confirma
 import { MatDialogModule } from '@angular/material/dialog';
 import { NotificacaoComponent } from './notificacao/notificacao.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TableItemsCartComponent } from './table-items-cart/table-items-cart.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     StoreListComponent,
     ProductCardComponent,
     DialogConfirmacaoComponent,
-    NotificacaoComponent
+    NotificacaoComponent,
+    TableItemsCartComponent
   ],
   imports: [
     CommonModule,
@@ -34,13 +37,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatBadgeModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatTableModule,
 
   ],
   exports: [
     HeaderComponent,
     StoreListComponent,
     ProductCardComponent,
-    DialogConfirmacaoComponent
+    DialogConfirmacaoComponent,
+    TableItemsCartComponent
   ],
   entryComponents: [
     DialogConfirmacaoComponent
