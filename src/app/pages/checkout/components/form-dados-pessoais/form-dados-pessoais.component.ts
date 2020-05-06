@@ -43,6 +43,27 @@ export class FormDadosPessoaisComponent implements OnInit {
     ).subscribe();
   }
 
+  buscaCep(cep: string): void {
+    const enderecoForm = this.form.get('endereco');
+
+    if (cep.length === 8) {
+      this.procurandoEndereco = true;
+      enderecoForm.get('cep').disable();
+      this.http.get(`https://viacep.com.br/ws/${cep}/json/unicode/`).toPromise()
+        .then(endereco => {
+          console.log('viaCep: ', endereco);
+          this.preencheFormEndereco(endereco);
+          enderecoForm.get('cep').enable();
+          this.procurandoEndereco = false;
+        });
+    } else {
+      enderecoForm.get('rua').reset();
+      enderecoForm.get('bairro').reset();
+      enderecoForm.get('cidade').reset();
+      enderecoForm.get('estado').reset();
+    }
+  }
+
   preencheFormEndereco(endereco): void {
     const enderecoForm = this.form.get('endereco');
     enderecoForm.get('rua').setValue(endereco.logradouro);

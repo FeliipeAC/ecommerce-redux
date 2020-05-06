@@ -13,6 +13,7 @@ export class CheckoutComponent implements OnInit {
 
   formDadosPessoais: FormGroup;
   formEndereco: FormGroup;
+  formPagamento: FormGroup;
 
   constructor(private fb: FormBuilder) {
 
@@ -35,6 +36,10 @@ export class CheckoutComponent implements OnInit {
       sexo: new FormControl('', Validators.required),
       endereco: this.formEndereco
     });
+
+    this.formPagamento = this.fb.group({
+      tipo: new FormControl('', Validators.required),
+    });
   }
 
   ngOnInit(): void {
@@ -47,6 +52,11 @@ export class CheckoutComponent implements OnInit {
         Object.keys(this.formDadosPessoais.controls).forEach(campo => {
           this.formDadosPessoais.get(campo).markAsTouched();
         });
+
+        Object.keys(this.formEndereco.controls).forEach(campo => {
+          this.formEndereco.get(campo).markAsTouched();
+        });
+
         if (this.formDadosPessoais.valid) {
           this.stepper.next();
         }

@@ -47,7 +47,7 @@
         <div class="box-form">
             <div class="field w20" [class.invalid]="isInvalidEndereco('cep')">
                 <span>CEP</span>
-                <input matInput formControlName="cep" required maxlength="8">
+                <input matInput formControlName="cep" #cep required maxlength="8" (keyup)="buscaCep(cep.value)">
                 <mat-spinner *ngIf="procurandoEndereco" class="fadeIn" diameter="22" color="primary"></mat-spinner>
             </div>
 
