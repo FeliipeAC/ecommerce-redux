@@ -25,7 +25,7 @@ body {
         display: flex;
         flex-direction: column;
         margin-right: 12px;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
         flex: 0 1 100%;
         min-width: 0;
         position: relative;
@@ -51,11 +51,21 @@ body {
             flex: 0 1 calc(50% - 12px);
         }
 
-        span {
+        label {
             font-size: 13px;
             color: #777d86;
             margin-bottom: 6px;
             transition: color .3s ease-in-out;
+        }
+
+        span {
+            font-size: 11px;
+            position: absolute;
+            left: 0;
+            bottom: -17px;
+            color: #f84938;
+            animation-name: fadeIn;
+            animation-duration: .4s;
         }
 
         input,
@@ -75,7 +85,7 @@ body {
         }
 
         &.invalid {
-            span {
+            label {
                 color: #f84938;
             }
 
@@ -124,7 +134,7 @@ h2 {
     padding: 8px 16px !important;
 
     &.success {
-        background-color: #ecf6da;
+        background-color: #919191;
         border-color: #d0ee94;
 
         mat-icon {
@@ -158,5 +168,25 @@ h2 {
         vertical-align: middle;
         font-size: 14px;
         color: #222428;
+    }
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    margin: 4px 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #eaeaea;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    //background-color: #e4e7eb;
+    background-color: #c1c1c1;
+
+    &:hover {
+        background-color: #b9b9b9;
     }
 }

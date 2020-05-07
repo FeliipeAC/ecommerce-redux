@@ -5,37 +5,55 @@
         <div class="box-form">
 
             <div class="field w30" [class.invalid]="isInvalid('nome')">
-                <span>Nome</span>
+                <label>Nome</label>
                 <input matInput formControlName="nome" required>
+                <span *ngIf="isInvalid('nome')">
+                    {{getError(form.get('nome').errors)}}
+                </span>
             </div>
 
             <div class="field w50" [class.invalid]="isInvalid('sobrenome')">
-                <span>Sobrenome</span>
+                <label>Sobrenome</label>
                 <input matInput formControlName="sobrenome">
+                <span *ngIf="isInvalid('sobrenome')">
+                    {{getError(form.get('sobrenome').errors)}}
+                </span>
             </div>
 
-            <div class="field w20" [class.invalid]="isInvalid('aniversario')">
-                <span>Data de aniversário</span>
-                <input matInput formControlName="aniversario">
+            <div class="field w20" [class.invalid]="isInvalid('nascimento')">
+                <label>Data de nascimento</label>
+                <input matInput formControlName="nascimento" [mask]="'00/00/0000'">
+                <span *ngIf="isInvalid('nascimento')">
+                    {{getError(form.get('nascimento').errors)}}
+                </span>
             </div>
 
             <div class="field w30" [class.invalid]="isInvalid('celular')">
-                <span>Celular</span>
-                <input matInput formControlName="celular">
+                <label>Celular</label>
+                <input matInput formControlName="celular" [mask]="'(00) 0 0000-0000'">
+                <span *ngIf="isInvalid('celular')">
+                    {{getError(form.get('celular').errors)}}
+                </span>
             </div>
 
             <div class="field w50" [class.invalid]="isInvalid('email')">
-                <span>E-mail</span>
+                <label>E-mail</label>
                 <input matInput formControlName="email">
+                <span *ngIf="isInvalid('email')">
+                    {{getError(form.get('email').errors)}}
+                </span>
             </div>
 
             <div class="field w20" [class.invalid]="isInvalid('sexo')">
-                <span>Sexo</span>
+                <label>Sexo</label>
                 <mat-select formControlName="sexo">
                     <mat-option value="feminino">Feminino</mat-option>
                     <mat-option value="masculino">Masculino</mat-option>
                     <mat-option value="outro">Outro</mat-option>
                 </mat-select>
+                <span *ngIf="isInvalid('sexo')">
+                    {{getError(form.get('sexo').errors)}}
+                </span>
             </div>
         </div>
 
@@ -46,38 +64,56 @@
 
         <div class="box-form">
             <div class="field w20" [class.invalid]="isInvalidEndereco('cep')">
-                <span>CEP</span>
-                <input matInput formControlName="cep" #cep required maxlength="8" (keyup)="buscaCep(cep.value)">
+                <label>CEP</label>
+                <input matInput formControlName="cep" #cep required (keyup)="buscaCep()" [mask]="'00.000-000'">
+                <span *ngIf="isInvalidEndereco('cep')">
+                    {{getError(form.get('endereco').get('cep').errors)}}
+                </span>
                 <mat-spinner *ngIf="procurandoEndereco" class="fadeIn" diameter="22" color="primary"></mat-spinner>
             </div>
 
             <div class="field w50" [class.invalid]="isInvalidEndereco('rua')">
-                <span>Rua</span>
+                <label>Rua</label>
                 <input matInput formControlName="rua" readonly>
+                <span *ngIf="isInvalidEndereco('rua')">
+                    {{getError(form.get('endereco').get('rua').errors)}}
+                </span>
             </div>
 
             <div class="field w30" [class.invalid]="isInvalidEndereco('bairro')">
-                <span>Bairro</span>
+                <label>Bairro</label>
                 <input matInput formControlName="bairro" readonly>
+                <span *ngIf="isInvalidEndereco('bairro')">
+                    {{getError(form.get('endereco').get('bairro').errors)}}
+                </span>
             </div>
 
             <div class="field w20" [class.invalid]="isInvalidEndereco('numero')">
-                <span>Número</span>
-                <input matInput type="number" formControlName="numero">
+                <label>Número</label>
+                <input matInput formControlName="numero" [mask]="'0*'">
+                <span *ngIf="isInvalidEndereco('numero')">
+                    {{getError(form.get('endereco').get('numero').errors)}}
+                </span>
             </div>
 
             <div class="field w50" [class.invalid]="isInvalidEndereco('cidade')">
-                <span>Cidade</span>
+                <label>Cidade</label>
                 <input matInput formControlName="cidade" readonly>
+                <span *ngIf="isInvalidEndereco('cidade')">
+                    {{getError(form.get('endereco').get('cidade').errors)}}
+                </span>
             </div>
 
             <div class="field w30" [class.invalid]="isInvalidEndereco('estado')">
-                <span>Estado</span>
+                <label>Estado</label>
                 <input matInput formControlName="estado" readonly>
+                <span *ngIf="isInvalidEndereco('estado')">
+                    {{getError(form.get('endereco').get('estado').errors)}}
+                </span>
             </div>
 
             <div class="field w50" [class.invalid]="isInvalidEndereco('complemento')">
-                <span>Complemento</span>
+                <label>Complemento</label>
                 <input matInput formControlName="complemento">
             </div>
         </div>

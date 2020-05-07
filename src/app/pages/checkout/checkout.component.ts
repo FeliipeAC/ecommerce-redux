@@ -1,6 +1,7 @@
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
+import { validateEmail, validateDate } from 'src/app/shared/custom-validators';
 
 @Component({
   selector: 'app-checkout',
@@ -23,16 +24,16 @@ export class CheckoutComponent implements OnInit {
       bairro: new FormControl('', Validators.required),
       cidade: new FormControl('', Validators.required),
       estado: new FormControl('', Validators.required),
-      numero: new FormControl('', Validators.required),
+      numero: new FormControl('', [Validators.required, Validators.min(0)]),
       complemento: new FormControl(''),
     });
 
     this.formDadosPessoais = this.fb.group({
       nome: new FormControl('', Validators.required),
       sobrenome: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, validateEmail]),
       celular: new FormControl('', Validators.required),
-      aniversario: new FormControl('', Validators.required),
+      nascimento: new FormControl('', [Validators.required, validateDate]),
       sexo: new FormControl('', Validators.required),
       endereco: this.formEndereco
     });

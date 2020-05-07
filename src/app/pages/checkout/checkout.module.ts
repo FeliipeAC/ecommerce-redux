@@ -1,3 +1,4 @@
+import { NgxMaskModule } from 'ngx-mask';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Routes, RouterModule } from '@angular/router';
@@ -25,6 +26,7 @@ const APP_ROUTES: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(APP_ROUTES),
+    NgxMaskModule.forRoot(),
 
     MatStepperModule,
     MatInputModule,
