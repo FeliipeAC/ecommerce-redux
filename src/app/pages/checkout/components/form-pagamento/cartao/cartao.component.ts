@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { StringifyOptions } from 'querystring';
 
 @Component({
   selector: 'app-cartao',
@@ -6,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cartao.component.scss']
 })
 export class CartaoComponent implements OnInit {
+
+  @Input() dados: {
+    nome: string;
+    numero: string;
+    ccv: string;
+    validade: string;
+  };
+
+  @Input() show: boolean;
 
   constructor() { }
 

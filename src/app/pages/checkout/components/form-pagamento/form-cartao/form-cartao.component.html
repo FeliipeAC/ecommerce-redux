@@ -1,0 +1,39 @@
+<div class="fadeIn">
+    <app-cartao [show]="showBack" [dados]="form.value"></app-cartao>
+    <form [formGroup]="form">
+        <div class="box-form">
+            <div class="field w70" [class.invalid]="isInvalid('numero')">
+                <label>Número do cartão</label>
+                <input matInput formControlName="numero" required [mask]="'0000 0000 0000 0000'">
+                <span class="error" *ngIf="isInvalid('numero')">
+                    {{getError(form.get('numero').errors)}}
+                </span>
+            </div>
+
+            <div class="field w30" [class.invalid]="isInvalid('validade')">
+                <label>Validade</label>
+                <input matInput formControlName="validade" [mask]="'00/00'">
+                <span class="error" *ngIf="isInvalid('validade')">
+                    {{getError(form.get('validade').errors)}}
+                </span>
+            </div>
+
+            <div class="field w70" [class.invalid]="isInvalid('nome')">
+                <label>Nome</label>
+                <input matInput formControlName="nome">
+                <span class="error" *ngIf="isInvalid('nome')">
+                    {{getError(form.get('nome').errors)}}
+                </span>
+            </div>
+
+            <div class="field w30" [class.invalid]="isInvalid('ccv')">
+                <label>CCV</label>
+                <input matInput formControlName="ccv" (focusin)="showBack = true" (focusout)="showBack = false"
+                    [mask]="'000'">
+                <span class="error" *ngIf="isInvalid('ccv')">
+                    {{getError(form.get('ccv').errors)}}
+                </span>
+            </div>
+        </div>
+    </form>
+</div>

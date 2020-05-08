@@ -1,18 +1,24 @@
 <div class="cartao">
-    <div class="credit-card">
+    <div class="credit-card" [class.rotate]="show">
         <div class="front">
-            <div class="chip"></div>
+            <div class="chip">
+                <span class="left"></span>
+                <span class="right"></span>
+                <span class="top"></span>
+                <span class="bottom"></span>
+            </div>
             <div class="flag">
                 <img src="assets/svgs/icon-mastercard.svg" alt="">
             </div>
-            <p></p>
-            <div>
-                <span></span>
-                <span></span>
+            <p>{{dados.numero | mask: '0000 0000 0000 0000'}}</p>
+            <div class="info">
+                <span>{{dados.nome}}</span>
+                <span>{{dados.validade | mask: '00/00'}}</span>
             </div>
         </div>
         <div class="back">
-            <p></p>
+            <div></div>
+            <div class="ccv">{{dados.ccv}}</div>
         </div>
     </div>
 </div>

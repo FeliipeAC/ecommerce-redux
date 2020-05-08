@@ -15,6 +15,8 @@ body {
     max-width: 1366px;
     margin: 0 auto;
     padding: 24px;
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
 }
 
 .box-form {
@@ -32,7 +34,6 @@ body {
 
         &:nth-child(3n) {
             margin-right: 0;
-            flex: 0 1 calc(33.33% - 8px);
         }
 
         &.w10 {
@@ -49,6 +50,14 @@ body {
 
         &.w50 {
             flex: 0 1 calc(50% - 12px);
+        }
+
+        &.w70 {
+            flex: 0 1 calc(70% - 12px);
+        }
+
+        &.w80 {
+            flex: 0 1 calc(80% - 12px);
         }
 
         label {
@@ -129,6 +138,40 @@ h2 {
     animation-duration: .4s;
 }
 
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.fadeInLeft {
+    animation-name: fadeInLeft;
+    animation-duration: .4s;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.fadeInRight {
+    animation-name: fadeInRight;
+    animation-duration: .4s;
+}
+
 .mat-snack-bar-container {
     border: solid 1px;
     padding: 8px 16px !important;
@@ -171,19 +214,27 @@ h2 {
     }
 }
 
+.mat-stepper-horizontal {
+    height: calc(100vh - 190px);
+}
+
+.mat-horizontal-content-container {
+    max-height: calc(100vh - 286px);
+    overflow-y: auto !important;
+}
+
 ::-webkit-scrollbar-track {
     background-color: transparent;
-    margin: 4px 0;
 }
 
 ::-webkit-scrollbar {
     width: 8px;
     background-color: #eaeaea;
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    //background-color: #e4e7eb;
     background-color: #c1c1c1;
 
     &:hover {

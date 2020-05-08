@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+
 .cartao {}
 
 .credit-card {
@@ -9,9 +11,9 @@
     position: relative;
     margin: 0 auto 24px auto;
 
-    // &:hover {
-    //     transform: rotateY(180deg);
-    // }
+    &.rotate {
+        transform: rotateY(180deg);
+    }
 
     >div {
         position: absolute;
@@ -21,15 +23,136 @@
         border-radius: 4px;
 
         &.front {
-            background-color: #cecece;
+            background-color: #3f51b5;
 
             .chip {
                 width: 48px;
                 height: 32px;
-                border-radius: 4px;
+                border-radius: 8px;
                 background: linear-gradient((135deg), #fffb97 0%, #BCAD76 100%);
                 margin: 24px 0 0 24px;
                 display: inline-block;
+                position: relative;
+                font-family: 'Electrolize', sans-serif;
+
+                span.left {
+                    height: 21px;
+                    width: 10px;
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    border-color: #322d28;
+                    border-width: 1px;
+                    border-right-style: solid;
+                    border-bottom-style: solid;
+                    border-top-style: solid;
+
+                    &:before {
+                        content: '';
+                        content: "";
+                        width: 10px;
+                        height: 1px;
+                        background-color: #322d28;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        margin: auto;
+                    }
+                }
+
+                span.right {
+                    height: 21px;
+                    width: 10px;
+                    display: block;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    border-color: #322d28;
+                    border-width: 1px;
+                    border-left-style: solid;
+                    border-bottom-style: solid;
+                    border-top-style: solid;
+
+                    &:before {
+                        content: '';
+                        content: "";
+                        width: 10px;
+                        height: 1px;
+                        background-color: #322d28;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        margin: auto;
+                    }
+                }
+
+                span.top {
+                    height: 10px;
+                    width: 16px;
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 11px;
+                    margin: auto;
+                    border-color: #322d28;
+                    border-width: 1px;
+                    border-right-style: solid;
+                    border-bottom-style: solid;
+
+                    &:before {
+                        content: '';
+                        content: "";
+                        width: 1px;
+                        height: 10px;
+                        background-color: #322d28;
+                        position: absolute;
+                        top: 0;
+                        left: 8px;
+                        margin: auto;
+                    }
+                }
+
+                span.bottom {
+                    height: 10px;
+                    width: 26px;
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 11px;
+                    margin: auto;
+                    border-color: #322d28;
+                    border-width: 1px;
+                    border-top-style: solid;
+
+                    &:before {
+                        content: "";
+                        width: 1px;
+                        height: 10px;
+                        background-color: #322d28;
+                        position: absolute;
+                        bottom: 0;
+                        left: 8px;
+                        margin: auto;
+                    }
+
+                    &:after {
+                        content: "";
+                        width: 1px;
+                        height: 10px;
+                        background-color: #322d28;
+                        position: absolute;
+                        bottom: 0;
+                        right: 8px;
+                        margin: auto;
+                    }
+                }
             }
 
             .flag {
@@ -44,11 +167,58 @@
                     object-fit: contain;
                 }
             }
+
+            p {
+                margin: 20px 24px;
+                text-align: center;
+                font-size: 21px;
+                font-family: 'Electrolize', sans-serif;
+                color: #fff;
+                text-shadow: 1px 1px 1px #1f1f1f;
+            }
+
+            .info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 24px;
+                margin-top: 24px;
+
+                span {
+                    text-transform: uppercase;
+                    font-family: 'Electrolize', sans-serif;
+                    color: #fff;
+                    text-shadow: 1px 1px 1px #1f1f1f;
+                }
+            }
         }
 
         &.back {
             transform: rotateY(180deg);
-            background-color: black;
+            background-color: #3f51b5;
+
+            div {
+                width: 100%;
+                height: 42px;
+                background-color: #252525;
+                margin-top: 24px;
+            }
+
+            .ccv {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 24px;
+                width: 46px;
+                font-family: 'Electrolize', sans-serif;
+                color: #1b1b1b;
+                text-shadow: 1px 1px 1px #1f1f1f;
+                margin-top: 24px;
+                margin-right: 24px;
+                background: #e0e0e0;
+                padding: 4px 6px;
+                float: right;
+            }
         }
     }
 
