@@ -48,24 +48,25 @@ export class CheckoutComponent implements OnInit {
 
   avancar(): void {
     console.log('stepper: ', this.stepper);
-    switch (this.stepper.selectedIndex) {
-      case 0:
-        Object.keys(this.formDadosPessoais.controls).forEach(campo => {
-          this.formDadosPessoais.get(campo).markAsTouched();
-        });
+    // switch (this.stepper.selectedIndex) {
+    //   case 0:
+    //     Object.keys(this.formDadosPessoais.controls).forEach(campo => {
+    //       this.formDadosPessoais.get(campo).markAsTouched();
+    //     });
 
-        Object.keys(this.formEndereco.controls).forEach(campo => {
-          this.formEndereco.get(campo).markAsTouched();
-        });
+    //     Object.keys(this.formEndereco.controls).forEach(campo => {
+    //       this.formEndereco.get(campo).markAsTouched();
+    //     });
 
-        if (this.formDadosPessoais.valid) {
-          this.stepper.next();
-        }
-        break;
+    //     if (this.formDadosPessoais.valid) {
+    //       this.stepper.next();
+    //     }
+    //     break;
 
-      default:
-        break;
-    }
+    //   default:
+    //     break;
+    // }
+    this.stepper.next();
   }
 
 }

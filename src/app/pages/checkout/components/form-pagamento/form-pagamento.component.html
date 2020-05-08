@@ -6,7 +6,7 @@
             <div class="box-form">
                 <div class="field">
                     <!-- <span>Escolha a forma de pagamento</span> -->
-                    <mat-radio-group aria-label="Escolha a forma de pagamento" color="primary">
+                    <mat-radio-group aria-label="Escolha a forma de pagamento" color="primary" formControlName="tipo">
                         <mat-radio-button value="boleto">Boleto</mat-radio-button>
                         <mat-radio-button value="cartao">Cartão de crédito</mat-radio-button>
                     </mat-radio-group>
@@ -14,5 +14,10 @@
             </div>
         </form>
     </div>
-    <div class="box"></div>
+    <div class="box">
+        <app-boleto [valor]="(carrinho$ | async).total" *ngIf="form.get('tipo').value === 'boleto'">
+        </app-boleto>
+
+        <app-cartao *ngIf="form.get('tipo').value === 'cartao'"></app-cartao>
+    </div>
 </div>

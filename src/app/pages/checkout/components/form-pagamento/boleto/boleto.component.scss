@@ -1,0 +1,24 @@
+.boleto {
+    text-align: center;
+
+    .bar-code {
+        max-width: 240px;
+        display: block;
+        margin: auto;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    a {
+        margin: 16px auto 0 auto;
+    }
+}
+
+h3 {
+    text-align: center;
+    margin: 0;
+}

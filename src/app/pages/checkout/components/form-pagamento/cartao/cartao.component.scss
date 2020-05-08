@@ -1,0 +1,55 @@
+.cartao {}
+
+.credit-card {
+    width: 320px;
+    height: 168px;
+    border-radius: 4px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    position: relative;
+    margin: 0 auto 24px auto;
+
+    // &:hover {
+    //     transform: rotateY(180deg);
+    // }
+
+    >div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 4px;
+
+        &.front {
+            background-color: #cecece;
+
+            .chip {
+                width: 48px;
+                height: 32px;
+                border-radius: 4px;
+                background: linear-gradient((135deg), #fffb97 0%, #BCAD76 100%);
+                margin: 24px 0 0 24px;
+                display: inline-block;
+            }
+
+            .flag {
+                width: 48px;
+                height: 32px;
+                margin: 24px 24px 0 0;
+                float: right;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+
+        &.back {
+            transform: rotateY(180deg);
+            background-color: black;
+        }
+    }
+
+}

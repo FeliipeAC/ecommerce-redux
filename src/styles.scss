@@ -58,7 +58,7 @@ body {
             transition: color .3s ease-in-out;
         }
 
-        span {
+        span.error {
             font-size: 11px;
             position: absolute;
             left: 0;
@@ -134,7 +134,7 @@ h2 {
     padding: 8px 16px !important;
 
     &.success {
-        background-color: #919191;
+        background-color: #ecf6da;
         border-color: #d0ee94;
 
         mat-icon {

@@ -1,6 +1,6 @@
 <div class="container">
     <mat-horizontal-stepper #stepper [linear]="true">
-        <mat-step [stepControl]="formDadosPessoais" label="Informações pessoais" state="dados">
+        <mat-step label="Informações pessoais" state="dados">
             <!-- <ng-template matStepLabel></ng-template> -->
             <app-form-dados-pessoais [form]="formDadosPessoais"></app-form-dados-pessoais>
             <div class="bt-actions">
@@ -10,7 +10,12 @@
 
         <mat-step label="Pagamento" state="pagamento">
             <!-- <ng-template matStepLabel>Pagamento</ng-template> -->
-            <app-form-pagemento [form]="formPagamento"></app-form-pagemento>
+            <app-form-pagamento [form]="formPagamento"></app-form-pagamento>
+
+            <div class="bt-actions">
+                <button mat-flat-button>Voltar</button>
+                <button mat-flat-button color="primary" (click)="avancar()">Avançar</button>
+            </div>
         </mat-step>
 
         <mat-step label="Confirmação" state="confirmacao">

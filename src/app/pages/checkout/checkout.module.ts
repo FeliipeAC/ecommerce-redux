@@ -1,3 +1,5 @@
+import { BoletoComponent } from './components/form-pagamento/boleto/boleto.component';
+import { CartaoComponent } from './components/form-pagamento/cartao/cartao.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,8 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { FormPagementoComponent } from './components/form-pagemento/form-pagemento.component';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormPagamentoComponent } from './components/form-pagamento/form-pagamento.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -22,7 +24,13 @@ const APP_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [CheckoutComponent, FormDadosPessoaisComponent, FormPagementoComponent],
+  declarations: [
+    CheckoutComponent,
+    FormDadosPessoaisComponent,
+    FormPagamentoComponent,
+    BoletoComponent,
+    CartaoComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(APP_ROUTES),
