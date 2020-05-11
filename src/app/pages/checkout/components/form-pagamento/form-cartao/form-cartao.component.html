@@ -1,10 +1,11 @@
 <div class="fadeIn">
-    <app-cartao [show]="showBack" [dados]="form.value"></app-cartao>
+    <app-cartao [show]="showBack" [dados]="form.value" [logo]="logo"></app-cartao>
     <form [formGroup]="form">
         <div class="box-form">
             <div class="field w70" [class.invalid]="isInvalid('numero')">
                 <label>Número do cartão</label>
-                <input matInput formControlName="numero" required [mask]="'0000 0000 0000 0000'">
+                <input matInput formControlName="numero" #cardNumber required [mask]="'0000 0000 0000 0000'"
+                    (keyup)="verificaNumero(cardNumber.value)" [dropSpecialCharacters]="false">
                 <span class="error" *ngIf="isInvalid('numero')">
                     {{getError(form.get('numero').errors)}}
                 </span>
@@ -32,6 +33,18 @@
                     [mask]="'000'">
                 <span class="error" *ngIf="isInvalid('ccv')">
                     {{getError(form.get('ccv').errors)}}
+                </span>
+            </div>
+
+            <div class="field w100" [class.invalid]="isInvalid('parcelas')">
+                <label>Parcelas</label>
+                <mat-select formControlName="parcelas">
+                    <mat-option *ngFor="let parcela of parcelas" [value]="parcela">
+                        {{parcela.numero}}x de {{parcela.valor | currency: 'BRL'}}
+                    </mat-option>
+                </mat-select>
+                <span class="error" *ngIf="isInvalid('parcelas')">
+                    {{getError(form.get('parcelas').errors)}}
                 </span>
             </div>
         </div>

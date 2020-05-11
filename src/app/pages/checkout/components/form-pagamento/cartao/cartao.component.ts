@@ -15,7 +15,10 @@ export class CartaoComponent implements OnInit {
     validade: string;
   };
 
+  @Input() logo: string;
+
   @Input() show: boolean;
+
 
   constructor() { }
 

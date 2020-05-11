@@ -1,5 +1,4 @@
 import { ItemCarrinhoModel } from './../models/item-carrinho-model';
-import { ProdutoModel } from './../models/produto-model';
 import { Action } from '@ngrx/store';
 
 export enum ActionTypes {

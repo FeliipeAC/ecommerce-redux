@@ -7,8 +7,8 @@
                 <span class="top"></span>
                 <span class="bottom"></span>
             </div>
-            <div class="flag">
-                <img src="assets/svgs/icon-mastercard.svg" alt="">
+            <div class="flag fadeIn" *ngIf="logo">
+                <img [src]="logo" alt="Bandeira">
             </div>
             <p>{{dados.numero | mask: '0000 0000 0000 0000'}}</p>
             <div class="info">

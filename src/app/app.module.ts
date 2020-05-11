@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { registerLocaleData } from '@angular/common';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+import { orderReducer } from './reduces/order-reducer';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -44,7 +45,8 @@ registerLocaleData(localePt, 'pt');
     BrowserAnimationsModule,
     HttpClientModule,
     StoreModule.forRoot({
-      carrinho: carrinhoReducer
+      carrinho: carrinhoReducer,
+      order: orderReducer
     }),
     ComponentsModule,
 

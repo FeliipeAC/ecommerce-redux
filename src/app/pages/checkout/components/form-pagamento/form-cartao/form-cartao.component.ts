@@ -1,3 +1,4 @@
+import { ValidaCartaoService } from './../../../../../services/valida-cartao.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -9,11 +10,42 @@ export class FormCartaoComponent implements OnInit {
 
   @Input() form;
 
+  @Input() total: number;
+
+  logo: string;
+
   showBack = false;
 
-  constructor() { }
+  maxParcelas = 10;
+
+  parcelas: { numero: number; valor: number }[] = [];
+
+  constructor(private cartaoService: ValidaCartaoService) { }
 
   ngOnInit(): void {
+    this.getListParcelas();
+  }
+
+  getListParcelas(): void {
+
+    for (let i = 1; i <= this.maxParcelas; i++) {
+      this.parcelas.push(
+        {
+          numero: i,
+          valor: this.total / i
+        }
+      );
+    }
+    this.form.get('parcelas').setValue(this.parcelas[0]);
+
+  }
+
+  verificaNumero(numero: string): void {
+    if (numero.length === 19) {
+      this.logo = this.cartaoService.validaNumero(numero.trim());
+    } else {
+      this.logo = null;
+    }
   }
 
   isInvalid(campo: string): boolean {
@@ -25,10 +57,10 @@ export class FormCartaoComponent implements OnInit {
       return 'Campo obrigatório';
     } else if (erro.invalidEmail) {
       return 'E-mail inválido';
-    } else if (erro.invalidDate) {
+    } else if (erro.invalidValidity) {
       return 'Data inválida';
-    } else if (erro.invalidCep) {
-      return 'CEP inválido';
+    } else if (erro.cardNumberInvalid) {
+      return 'Número de cartão inválido';
     }
     return '';
   }

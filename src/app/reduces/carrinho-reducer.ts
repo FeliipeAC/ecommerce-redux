@@ -9,8 +9,6 @@ export function carrinhoReducer(state = new CarrinhoModel(), action: ActionModel
     switch (action.type) {
         case ActionTypes.Add:
             {
-                console.log('state: ', state);
-                console.log('action: ', action);
                 if (state.items.length === 0) {
                     let newItem = new ItemCarrinhoModel();
                     const obj = new CarrinhoModel();
@@ -63,7 +61,6 @@ export function carrinhoReducer(state = new CarrinhoModel(), action: ActionModel
                 obj.total = calculateTotal(obj.items);
 
                 state = Object.assign({}, obj);
-                console.log(state);
                 return state;
             }
 
@@ -72,7 +69,6 @@ export function carrinhoReducer(state = new CarrinhoModel(), action: ActionModel
                 state = new CarrinhoModel();
                 state.total = calculateTotal(state.items);
 
-                console.log(state);
                 return state;
             }
 
