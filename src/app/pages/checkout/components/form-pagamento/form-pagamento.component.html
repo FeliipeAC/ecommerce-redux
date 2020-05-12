@@ -6,10 +6,15 @@
             <div class="box-form">
                 <div class="field">
                     <!-- <span>Escolha a forma de pagamento</span> -->
-                    <mat-radio-group aria-label="Escolha a forma de pagamento" color="primary" formControlName="tipo" (change)="setFormCartao($event.value)">
+                    <mat-radio-group aria-label="Escolha a forma de pagamento" color="primary" formControlName="tipo"
+                        (change)="setFormCartao($event.value)">
                         <mat-radio-button value="boleto">Boleto</mat-radio-button>
                         <mat-radio-button value="cartao">Cartão de crédito</mat-radio-button>
                     </mat-radio-group>
+                    <span class="error" *ngIf="form.get('tipo').invalid && form.touched">
+                        <!-- {{getError(form.get('validade').errors)}} -->
+                        Escolha a forma de pagamento
+                    </span>
                 </div>
             </div>
         </form>

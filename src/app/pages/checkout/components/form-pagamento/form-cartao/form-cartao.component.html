@@ -40,7 +40,7 @@
                 <label>Parcelas</label>
                 <mat-select formControlName="parcelas">
                     <mat-option *ngFor="let parcela of parcelas" [value]="parcela">
-                        {{parcela.numero}}x de {{parcela.valor | currency: 'BRL'}}
+                        {{parcela.numero}}x de {{parcela.valor | currency: 'BRL'}} sem juros
                     </mat-option>
                 </mat-select>
                 <span class="error" *ngIf="isInvalid('parcelas')">

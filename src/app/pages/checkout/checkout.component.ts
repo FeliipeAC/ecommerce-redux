@@ -48,25 +48,50 @@ export class CheckoutComponent implements OnInit {
 
   avancar(): void {
     console.log('stepper: ', this.stepper);
-    // switch (this.stepper.selectedIndex) {
-    //   case 0:
-    //     Object.keys(this.formDadosPessoais.controls).forEach(campo => {
-    //       this.formDadosPessoais.get(campo).markAsTouched();
-    //     });
+    switch (this.stepper.selected.state) {
+      case 'dados':
+        this.checkFormDados();
+        break;
 
-    //     Object.keys(this.formEndereco.controls).forEach(campo => {
-    //       this.formEndereco.get(campo).markAsTouched();
-    //     });
+      case 'pagamento':
+        this.checkFormPagamento();
+        break;
 
-    //     if (this.formDadosPessoais.valid) {
-    //       this.stepper.next();
-    //     }
-    //     break;
+      default:
+        break;
+    }
+    // this.stepper.next();
+  }
 
-    //   default:
-    //     break;
-    // }
-    this.stepper.next();
+  checkFormDados(): void {
+    Object.keys(this.formDadosPessoais.controls).forEach(campo => {
+      this.formDadosPessoais.get(campo).markAsTouched();
+    });
+
+    Object.keys(this.formEndereco.controls).forEach(campo => {
+      this.formEndereco.get(campo).markAsTouched();
+    });
+
+    if (this.formDadosPessoais.valid) {
+      this.stepper.next();
+    }
+  }
+
+  checkFormPagamento(): void {
+    const tipo = this.formPagamento.get('tipo');
+    tipo.markAsTouched();
+
+    if (this.formPagamento.invalid) {
+      if (tipo.value === 'cartao') {
+        const cartaoForm: any = this.formPagamento.get('cartao');
+        Object.keys(cartaoForm.controls).forEach(campo => {
+          cartaoForm.get(campo).markAsTouched();
+        });
+      }
+      return;
+    } else {
+      this.stepper.next();
+    }
   }
 
 }

@@ -4,7 +4,7 @@
             <app-form-dados-pessoais [form]="formDadosPessoais"></app-form-dados-pessoais>
         </mat-step>
 
-        <mat-step label="Pagamento" state="pagamento">
+        <mat-step label="Pagamento" state="pagamento" >
             <app-form-pagamento [form]="formPagamento"></app-form-pagamento>
         </mat-step>
 
@@ -21,12 +21,10 @@
         <ng-template matStepperIcon="pagamento">
             <mat-icon>payment</mat-icon>
         </ng-template>
-
-        <ng-template matStepperIcon="pagamento">
+        <ng-template matStepperIcon="confirmacao">
             <mat-icon>ballot</mat-icon>
         </ng-template>
-
-        <ng-template matStepperIcon="pagamento">
+        <ng-template matStepperIcon="finalizado">
             <mat-icon>done</mat-icon>
         </ng-template>
     </mat-horizontal-stepper>

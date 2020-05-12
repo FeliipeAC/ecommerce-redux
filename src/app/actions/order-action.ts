@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import { OrderModel } from './../models/order-model';
 import { ClienteModel } from './../models/cliente-model';
 export enum ActionOrderTypes {

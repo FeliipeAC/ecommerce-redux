@@ -34,7 +34,7 @@ export class FormDadosPessoaisComponent implements OnInit {
           if (endereco.erro) {
             enderecoForm.get('cep').setErrors({ invalidCep: true });
           } else {
-            endereco.get('cep').setErrors();
+            enderecoForm.get('cep').setErrors(null);
           }
         })
         .catch(error => {

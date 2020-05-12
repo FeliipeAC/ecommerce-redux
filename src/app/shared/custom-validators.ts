@@ -17,8 +17,17 @@ export function validateDate(control: FormControl) {
 export function validateCardValidity(control: FormControl) {
     const validade = moment(control.value, 'MM/YYYY');
     const data = moment();
-    return validade.get('month') >= data.get('month') && validade.get('year') >= data.get('year')
-        ? null : { invalidValidity: true };
+    const valida = () => {
+        if (validade.get('year') > data.get('year')) {
+            return true;
+        } else if (validade.get('year') === data.get('year')) {
+            return validade.get('month') >= data.get('month');
+        } else {
+            return false;
+        }
+    };
+
+    return valida() ? null : { invalidValidity: true };
 }
 
 export function validateCardNumber(control: FormControl) {

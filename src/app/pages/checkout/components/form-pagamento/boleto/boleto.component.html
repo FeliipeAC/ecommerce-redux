@@ -3,8 +3,9 @@
         <img src="assets/images/bar-code.png" alt="Bar code">
     </span>
 
-    <h3>Valor: {{valor | currency: 'BRL'}}</h3>
+    <h4>{{valor | currency: 'BRL'}}</h4> <i>(10% de desconto)</i>
+    <h3>Valor: {{(valor * 0.9) | currency: 'BRL'}}</h3>
 
-    <a href="" mat-flat-button>Baixar boleto</a>
+    <!-- <a href="" mat-flat-button>Baixar boleto</a> -->
 
 </div>
