@@ -2,7 +2,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { ComponentsModule } from './components/components.module';
-import { carrinho, carrinhoReducer } from './reduces/carrinho-reducer';
 import localePt from '@angular/common/locales/pt';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
@@ -15,6 +14,7 @@ import { registerLocaleData } from '@angular/common';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 import { orderReducer } from './reduces/order-reducer';
+import { carrinhoReducer } from './reduces/carrinho-reducer';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,

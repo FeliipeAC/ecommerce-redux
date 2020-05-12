@@ -4,8 +4,8 @@
             <app-form-dados-pessoais [form]="formDadosPessoais"></app-form-dados-pessoais>
         </mat-step>
 
-        <mat-step label="Pagamento" state="pagamento" >
-            <app-form-pagamento [form]="formPagamento"></app-form-pagamento>
+        <mat-step label="Pagamento" state="pagamento">
+            <app-form-pagamento [form]="formPagamento" [total]="(carrinho$ | async).total"></app-form-pagamento>
         </mat-step>
 
         <mat-step label="Confirmação" state="confirmacao">
@@ -29,9 +29,11 @@
         </ng-template>
     </mat-horizontal-stepper>
     <div class="bt-actions">
+        <button mat-flat-button routerLink="/carrinho" class="fadeInRight" *ngIf="stepper.selectedIndex === 0">Voltar
+            para carrinho</button>
         <button mat-flat-button (click)="stepper.previous()" class="fadeInRight"
-            *ngIf="stepper.selectedIndex > 0">Voltar</button>
-        <button mat-flat-button color="primary" (click)="avancar()">Avançar</button>
+            *ngIf="stepper.selectedIndex !== 0">Voltar</button>
+        <button mat-flat-button class="fadeInRight" color="primary" (click)="avancar()">Avançar</button>
     </div>
 
 </div>

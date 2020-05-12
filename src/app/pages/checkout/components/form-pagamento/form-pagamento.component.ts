@@ -1,7 +1,3 @@
-import { CarrinhoModel } from '../../../../models/carrinho-model';
-import { Observable } from 'rxjs';
-import { AppStore } from '../../../../components/header/header.component';
-import { Store, select } from '@ngrx/store';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 import { validateCardValidity } from 'src/app/shared/custom-validators';
@@ -14,12 +10,11 @@ import { validateCardValidity } from 'src/app/shared/custom-validators';
 export class FormPagamentoComponent implements OnInit {
 
   @Input() form: FormGroup;
-  carrinho$: Observable<CarrinhoModel>;
+  @Input() total: number;
+
   formPagamento: FormGroup;
 
-  constructor(
-    private store: Store<AppStore>,
-    private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {
 
     this.formPagamento = this.fb.group({
       nome: new FormControl('', Validators.required),
@@ -28,7 +23,6 @@ export class FormPagamentoComponent implements OnInit {
       ccv: new FormControl('', Validators.required),
       parcelas: new FormControl('', Validators.required)
     });
-    this.carrinho$ = this.store.pipe(select('carrinho'));
   }
 
   ngOnInit(): void {

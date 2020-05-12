@@ -1,12 +1,12 @@
 <div class="container fadeIn">
-    <h1>Meu carrinho</h1>
+    <h1 class="fadeInLeft">Meu carrinho</h1>
     <ng-container *ngIf="(carrinho$ | async).items.length > 0; else empty">
         <div class="info">
-            <span *ngIf="(carrinho$ | async).items.length > 0">
+            <span *ngIf="(carrinho$ | async).items.length > 0" class="fadeInLeft">
                 {{(carrinho$ | async).items.length}}
                 {{(carrinho$ | async).items.length > 1 ? 'itens' : 'item'}} no carinho</span>
 
-            <button mat-button (click)="clear()">
+            <button mat-button (click)="clear()" class="fadeInRight">
                 <mat-icon>clear_all</mat-icon>
                 Esvaziar carrinho
             </button>
@@ -15,10 +15,10 @@
         </app-table-items-cart>
 
         <div class="bt-actions">
-            <a mat-button routerLink="/home">
+            <a mat-button routerLink="/home" class="fadeInRight">
                 Voltar para loja
             </a>
-            <a mat-flat-button color="primary" routerLink="/checkout">
+            <a mat-flat-button color="primary" class="fadeInRight" routerLink="/checkout">
                 Ir para checkout
             </a>
         </div>

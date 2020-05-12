@@ -9,12 +9,12 @@ export enum ActionTypes {
 
 export const Add = (item: ItemCarrinhoModel) => {
     return <Action>{ type: ActionTypes.Add, payload: item };
-}
+};
 
 export const Remove = (item: ItemCarrinhoModel) => {
     return <Action>{ type: ActionTypes.Remove, payload: item };
-}
+};
 
 export const Clear = () => {
     return <Action>{ type: ActionTypes.Clear, payload: null };
-}
+};

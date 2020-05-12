@@ -17,6 +17,7 @@ body {
     padding: 24px;
     max-height: calc(100vh - 130px);
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .box-form {

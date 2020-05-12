@@ -4,7 +4,6 @@ import { ActionTypes } from './../actions/carrinho-action';
 import { ActionModel } from './../models/action-model';
 import { CarrinhoModel } from './../models/carrinho-model';
 
-export let carrinho = new CarrinhoModel();
 export function carrinhoReducer(state = new CarrinhoModel(), action: ActionModel) {
     switch (action.type) {
         case ActionTypes.Add:

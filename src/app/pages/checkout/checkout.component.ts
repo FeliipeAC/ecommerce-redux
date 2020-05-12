@@ -1,3 +1,14 @@
+import { map, take } from 'rxjs/operators';
+import { Add } from './../../actions/carrinho-action';
+import { ClienteModel } from './../../models/cliente-model';
+import { EnderecoModel } from './../../models/endereco-model';
+import { OrderModel } from './../../models/order-model';
+import { OrderStore, AddOrder } from './../../actions/order-action';
+import { Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { AppStore } from './../../components/header/header.component';
+import { Observable } from 'rxjs';
+import { CarrinhoModel } from './../../models/carrinho-model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
@@ -11,13 +22,32 @@ import { validateEmail, validateDate } from 'src/app/shared/custom-validators';
 export class CheckoutComponent implements OnInit {
 
   @ViewChild('stepper') stepper: MatStepper;
+  carrinho$: Observable<CarrinhoModel>;
+  order$: Observable<OrderModel>;
 
   formDadosPessoais: FormGroup;
   formEndereco: FormGroup;
   formPagamento: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<AppStore>,
+    private orderStore: Store<OrderStore>,
+    private router: Router) {
 
+    this.carrinho$ = this.store.pipe(select('carrinho'));
+    this.order$ = this.orderStore.pipe(select('order'));
+
+  }
+
+  ngOnInit(): void {
+    this.criaForms();
+    // this.order$.subscribe(orderSubs => {
+    //   console.log(orderSubs);
+    // });
+  }
+
+  criaForms(): void {
     this.formEndereco = this.fb.group({
       cep: new FormControl('', Validators.required),
       rua: new FormControl('', Validators.required),
@@ -41,9 +71,6 @@ export class CheckoutComponent implements OnInit {
     this.formPagamento = this.fb.group({
       tipo: new FormControl('', Validators.required),
     });
-  }
-
-  ngOnInit(): void {
   }
 
   avancar(): void {
@@ -90,8 +117,50 @@ export class CheckoutComponent implements OnInit {
       }
       return;
     } else {
+      this.createOrder();
       this.stepper.next();
     }
+  }
+
+  createOrder(): void {
+    const enderecoValue = new EnderecoModel(this.formEndereco.value);
+    const cliente = this.formDadosPessoais.value;
+    const newCliente = new ClienteModel({
+      nome: cliente.nome,
+      sobrenome: cliente.sobrenome,
+      nascimento: cliente.nascimento,
+      email: cliente.email,
+      celular: cliente.celular,
+      sexo: cliente.sexo,
+      endereco: enderecoValue
+    });
+
+    const pagamentoValue = {
+      tipo: this.formPagamento.get('tipo').value,
+    };
+
+    if (this.formPagamento.get('tipo').value === 'cartao') {
+      const cartao = this.formPagamento.get('cartao').value;
+      Object.assign(pagamentoValue, cartao.parcelas);
+    }
+
+    let newCarrinho: CarrinhoModel;
+    this.carrinho$.
+      subscribe(cart => {
+        newCarrinho = new CarrinhoModel(cart);
+      });
+
+    const order = new OrderModel(
+      {
+        cliente: newCliente,
+        pagamento: pagamentoValue,
+        carrinho: newCarrinho
+      }
+    );
+    console.log('newCarrinho: ', newCarrinho);
+    console.log('order: ', order);
+
+    // this.orderStore.dispatch(AddOrder(order));
   }
 
 }

@@ -5,8 +5,13 @@ export class CarrinhoModel {
     public total: number;
     public items: ItemCarrinhoModel[];
 
-    constructor() {
-        this.total = 0;
-        this.items = [];
+    constructor(obj?) {
+        if (obj) {
+            this.total = obj.total;
+            this.items = obj.items;
+        } else {
+            this.total = 0;
+            this.items = [];
+        }
     }
 }

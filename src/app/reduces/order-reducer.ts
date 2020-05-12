@@ -1,5 +1,4 @@
 import { ActionOrderTypes } from './../actions/order-action';
-import { ActionTypes } from './../actions/carrinho-action';
 import { ActionModel } from './../models/action-model';
 import { OrderModel } from './../models/order-model';
 
@@ -8,6 +7,7 @@ export function orderReducer(state = new OrderModel(), action: ActionModel) {
         case ActionOrderTypes.Add:
             {
                 state = action.payload;
+                console.log('order: ', state);
                 return state;
             }
 

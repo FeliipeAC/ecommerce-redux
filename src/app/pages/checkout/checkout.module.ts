@@ -16,6 +16,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormPagamentoComponent } from './components/form-pagamento/form-pagamento.component';
 import { FormCartaoComponent } from './components/form-pagamento/form-cartao/form-cartao.component';
+import { ConfirmacaoComponent } from './components/confirmacao/confirmacao.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -31,7 +32,8 @@ const APP_ROUTES: Routes = [
     FormPagamentoComponent,
     BoletoComponent,
     CartaoComponent,
-    FormCartaoComponent
+    FormCartaoComponent,
+    ConfirmacaoComponent
   ],
   imports: [
     CommonModule,

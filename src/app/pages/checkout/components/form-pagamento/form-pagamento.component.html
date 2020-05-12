@@ -20,9 +20,9 @@
         </form>
     </div>
     <div class="box">
-        <app-boleto [valor]="(carrinho$ | async).total" *ngIf="form.get('tipo').value === 'boleto'">
+        <app-boleto [valor]="total" *ngIf="form.get('tipo').value === 'boleto'">
         </app-boleto>
         <app-form-cartao *ngIf="form.get('tipo').value === 'cartao'" [form]="formPagamento"
-            [total]="(carrinho$ | async).total"></app-form-cartao>
+            [total]="total"></app-form-cartao>
     </div>
 </div>

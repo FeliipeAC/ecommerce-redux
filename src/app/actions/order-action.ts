@@ -2,15 +2,16 @@ import { Action } from '@ngrx/store';
 import { OrderModel } from './../models/order-model';
 import { ClienteModel } from './../models/cliente-model';
 export enum ActionOrderTypes {
-    Add = 'Add',
-    Clear = 'CLE',
+    Add = 'ADDORDER',
+    Clear = 'CLEORDER',
 }
 
-export const Add = (order: OrderModel) => {
+export interface OrderStore { order: OrderModel; }
+
+export const AddOrder = (order: OrderModel) => {
     return <Action>{ type: ActionOrderTypes.Add, payload: order };
-}
-
+};
 
 export const Clear = () => {
     return <Action>{ type: ActionOrderTypes.Clear, payload: null };
-}
+};
