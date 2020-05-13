@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container fadeIn">
     <mat-horizontal-stepper #stepper [linear]="true">
         <mat-step label="Informações pessoais" state="dados">
             <app-form-dados-pessoais [form]="formDadosPessoais"></app-form-dados-pessoais>
@@ -9,6 +9,7 @@
         </mat-step>
 
         <mat-step label="Confirmação" state="confirmacao">
+            <app-confirmacao></app-confirmacao>
         </mat-step>
 
         <mat-step label="Finalizado" state="finalizado">

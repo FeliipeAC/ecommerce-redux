@@ -1,1 +1,36 @@
-<p>confirmacao works!</p>
+<div class="content">
+    <h2>Confirme seu pedido</h2>
+
+    <div class="box" *ngIf="(order$ | async) as order">
+        <div class="item">
+            <h3>Cliente</h3>
+            <div class="field">
+                <span>Nome</span>
+                {{order.cliente?.nome}}
+            </div>
+            <div class="field">
+                <span>Sobrenome</span>
+                {{order.cliente?.sobrenome}}
+            </div>
+            <div class="field">
+                <span>Nascimento</span>
+                {{order.cliente?.nascimento}}
+            </div>
+            <div class="field">
+                <span>Celular</span>
+                {{order.cliente?.celular}}
+            </div>
+            <div class="field">
+                <span>Cidade</span>
+                {{order.cliente?.email}}
+            </div>
+            <div class="field">
+                <span>Sexo</span>
+                {{order.cliente?.sexo}}
+            </div>
+        </div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</div>

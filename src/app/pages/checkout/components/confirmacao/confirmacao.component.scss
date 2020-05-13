@@ -1,0 +1,23 @@
+.box {
+    display: flex;
+    align-items: center;
+
+    .item {
+        flex: 0 1 calc(50% - 12px);
+        margin-bottom: 24px;
+
+        &:nth-child(2n) {
+            margin-left: 12px;
+        }
+
+        &:nth-child(2n - 1) {
+            margin-right: 12px;
+        }
+
+        span {
+            font-size: 13px;
+            color: #777d86;
+            margin-bottom: 6px;
+        }
+    }
+}
