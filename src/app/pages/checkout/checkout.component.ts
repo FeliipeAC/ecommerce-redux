@@ -1,16 +1,18 @@
+import { DialogConfirmacaoComponent } from './../../components/dialog-confirmacao/dialog-confirmacao.component';
+import { MatDialog } from '@angular/material/dialog';
 import { map, take } from 'rxjs/operators';
 import { Add } from './../../actions/carrinho-action';
 import { ClienteModel } from './../../models/cliente-model';
 import { EnderecoModel } from './../../models/endereco-model';
 import { OrderModel } from './../../models/order-model';
-import { OrderStore, AddOrder } from './../../actions/order-action';
+import { OrderStore, AddOrder, Clear } from './../../actions/order-action';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { AppStore } from './../../components/header/header.component';
-import { Observable } from 'rxjs';
+import { Observable, observable } from 'rxjs';
 import { CarrinhoModel } from './../../models/carrinho-model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
 import { validateEmail, validateDate } from 'src/app/shared/custom-validators';
 
@@ -19,7 +21,7 @@ import { validateEmail, validateDate } from 'src/app/shared/custom-validators';
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss']
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements OnInit, OnDestroy {
 
   @ViewChild('stepper') stepper: MatStepper;
   carrinho$: Observable<CarrinhoModel>;
@@ -28,12 +30,20 @@ export class CheckoutComponent implements OnInit {
   formDadosPessoais: FormGroup;
   formEndereco: FormGroup;
   formPagamento: FormGroup;
+  carrinhoSubs: any;
+
+  controlConfirmacao: FormControl;
+
+  isEditable = true;
+
+  textButton = ['Prosseguir', 'Prosseguir', 'Finalizar pedido', 'Ver mais produtos'];
 
   constructor(
     private fb: FormBuilder,
     private store: Store<AppStore>,
     private orderStore: Store<OrderStore>,
-    private router: Router) {
+    private router: Router,
+    private dialog: MatDialog) {
 
     this.carrinho$ = this.store.pipe(select('carrinho'));
     this.order$ = this.orderStore.pipe(select('order'));
@@ -42,9 +52,12 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.criaForms();
-    // this.order$.subscribe(orderSubs => {
-    //   console.log(orderSubs);
-    // });
+    this.order$.subscribe(orderSubs => {
+      console.log(orderSubs);
+      if (orderSubs.cliente) {
+        this.formDadosPessoais.setValue(orderSubs.cliente);
+      }
+    }).unsubscribe();
   }
 
   criaForms(): void {
@@ -71,6 +84,11 @@ export class CheckoutComponent implements OnInit {
     this.formPagamento = this.fb.group({
       tipo: new FormControl('', Validators.required),
     });
+
+    this.controlConfirmacao = new FormControl(null, Validators.required);
+  }
+
+  preencheFormDadosPessoais(): void {
   }
 
   avancar(): void {
@@ -84,10 +102,41 @@ export class CheckoutComponent implements OnInit {
         this.checkFormPagamento();
         break;
 
+      case 'confirmacao':
+        this.finalizarPedido();
+        break;
+
+      case 'finalizado':
+        this.router.navigate(['/home']);
+        break;
+
       default:
         break;
     }
     // this.stepper.next();
+  }
+
+  finalizarPedido(): void {
+    this.dialog.open(DialogConfirmacaoComponent, {
+      width: '380px',
+      data: {
+        titulo: 'Finalizar pedido',
+        texto: 'Revisou o pedido e <b>deseja finalizá-lo </b>?' +
+          ' <br> Depois de finalizar, você não poderá reverter esta ação.',
+        buttonText: {
+          cancelar: 'Revisar novamente',
+          confirmar: 'Finalizar'
+        }
+      }
+    })
+      .beforeClosed()
+      .subscribe(res => {
+        if (res) {
+          this.controlConfirmacao.setValue(true);
+          this.stepper.next();
+          this.isEditable = false;
+        }
+      });
   }
 
   checkFormDados(): void {
@@ -148,7 +197,7 @@ export class CheckoutComponent implements OnInit {
     this.carrinho$.
       subscribe(cart => {
         newCarrinho = new CarrinhoModel(cart);
-      });
+      }).unsubscribe();
 
     const order = new OrderModel(
       {
@@ -164,4 +213,7 @@ export class CheckoutComponent implements OnInit {
     this.orderStore.dispatch(AddOrder(order));
   }
 
+  ngOnDestroy() {
+    // this.orderStore.dispatch(Clear());
+  }
 }

@@ -18,7 +18,9 @@ export function orderReducer(state = new OrderModel(), action: ActionModel) {
 
         case ActionOrderTypes.Clear:
             {
-                state = null;
+                const obj = new OrderModel(state);
+                obj.pagamento = null;
+                state = Object.assign({}, obj);
                 return state;
             }
         default:

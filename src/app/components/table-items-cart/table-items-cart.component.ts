@@ -9,7 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TableItemsCartComponent implements OnInit {
 
-  displayedColumns: string[] = ['produto', 'preco', 'quantidade', 'subtotal', 'acoes'];
+  displayedColumns: string[] = ['item', 'preco', 'quantidade', 'subtotal', 'acoes'];
 
   @Input() data: CarrinhoModel;
 

@@ -1,14 +1,14 @@
 <div class="container fadeIn">
     <mat-horizontal-stepper #stepper [linear]="true">
-        <mat-step label="Informações pessoais" state="dados">
+        <mat-step label="Informações pessoais" state="dados" [stepControl]="formDadosPessoais" [editable]="isEditable">
             <app-form-dados-pessoais [form]="formDadosPessoais"></app-form-dados-pessoais>
         </mat-step>
 
-        <mat-step label="Pagamento" state="pagamento">
+        <mat-step label="Pagamento" state="pagamento" [stepControl]="formPagamento" [editable]="isEditable">
             <app-form-pagamento [form]="formPagamento" [total]="(carrinho$ | async).total"></app-form-pagamento>
         </mat-step>
 
-        <mat-step label="Confirmação" state="confirmacao">
+        <mat-step label="Confirmação" state="confirmacao" [stepControl]="controlConfirmacao" [editable]="isEditable">
             <app-confirmacao></app-confirmacao>
         </mat-step>
 
@@ -30,13 +30,19 @@
         </ng-template>
     </mat-horizontal-stepper>
     <div class="bt-actions">
-        <button mat-flat-button routerLink="/carrinho" class="fadeInRight" *ngIf="stepper.selectedIndex === 0">
-            Retornar para carrinho</button>
-        <button mat-flat-button (click)="stepper.previous()" class="fadeInRight" *ngIf="stepper.selectedIndex !== 0">
-            Retornar
-        </button>
-        <button mat-flat-button class="fadeInRight" color="primary" (click)="avancar()">
-            {{stepper.selectedIndex !== 2 ? 'Prosseguir' : 'Finalizar pedido'}}
+        <ng-container *ngIf="stepper.selectedIndex !== 3">
+            <button type="button" mat-flat-button routerLink="/carrinho" class="fadeInRight"
+                *ngIf="stepper.selectedIndex === 0">
+                Retornar para carrinho</button>
+            <button type="button" mat-flat-button (click)="stepper.previous()" class="fadeInRight"
+                *ngIf="stepper.selectedIndex !== 0">
+                Retornar
+            </button>
+        </ng-container>
+
+        <button type="button" mat-flat-button class="fadeInRight" color="primary" (click)="avancar()">
+            <!-- {{stepper.selectedIndex !== 2 ? 'Prosseguir' : 'Finalizar pedido'}} -->
+            {{textButton[stepper.selectedIndex]}}
         </button>
     </div>
 

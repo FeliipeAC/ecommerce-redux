@@ -41,7 +41,10 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: 12px 0;
-                border-bottom: 1px solid rgba(0, 0, 0, .12);
+                
+                &.border {
+                    border-bottom: 1px solid rgba(0, 0, 0, .12);
+                }
 
                 &:first-of-type {
                     padding-top: 0;

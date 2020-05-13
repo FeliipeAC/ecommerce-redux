@@ -1,3 +1,4 @@
+import { ContentNotificacaoModel } from './../../models/content-notificacao-model';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -10,7 +11,7 @@ export class DialogConfirmacaoComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DialogConfirmacaoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { titulo: string; texto: string }
+    @Inject(MAT_DIALOG_DATA) public data: ContentNotificacaoModel
   ) { }
 
   ngOnInit(): void {

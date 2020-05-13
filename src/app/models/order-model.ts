@@ -17,7 +17,7 @@ export class OrderModel {
             this.carrinho = null;
             this.pagamento = null;
             this.cliente = null;
-            this.total = null;
+            this.total = 0;
         }
     }
 }

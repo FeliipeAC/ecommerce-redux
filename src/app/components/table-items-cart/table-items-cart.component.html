@@ -1,7 +1,7 @@
 <mat-table [dataSource]="data.items" class="fadeIn">
 
-    <ng-container matColumnDef="produto">
-        <mat-header-cell *matHeaderCellDef> Produto </mat-header-cell>
+    <ng-container matColumnDef="item">
+        <mat-header-cell *matHeaderCellDef> Item </mat-header-cell>
         <mat-cell *matCellDef="let element">
             <figure>
                 <img [src]="element.produto.imagem" [alt]="element.produto.titulo">
@@ -33,7 +33,7 @@
     <ng-container matColumnDef="acoes">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let element">
-            <button mat-icon-button matTooltip="Remover produto" matTooltipPosition="above"
+            <button type="button" mat-icon-button matTooltip="Remover produto" matTooltipPosition="above"
                 (click)="removerProduto(element)">
                 <mat-icon>delete_outline</mat-icon>
             </button>

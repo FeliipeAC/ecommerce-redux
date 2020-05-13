@@ -12,13 +12,15 @@
             <hr>
             {{order.cliente?.endereco.rua}} {{order.cliente?.endereco.numero}}, {{order.cliente?.endereco.bairro}}
             <br>
+            {{order.cliente?.endereco.complemento}} <br>
             {{order.cliente?.endereco.cidade}}, {{order.cliente?.endereco.estado | uppercase}} <br>
             {{order.cliente?.endereco.cep | mask: '00.000-000'}}
         </div>
         <div class="item">
             <h3>Produtos</h3>
             <div class="list" *ngIf="order.carrinho">
-                <div class="produto" *ngFor="let item of order.carrinho.items">
+                <div class="produto" *ngFor="let item of order.carrinho.items; let last = last"
+                    [class.border]="order.carrinho.items.length > 1 && !last">
                     <div>{{item.produto.titulo}}</div>
                     <div>{{item.quantidade}}</div>
                     <div>{{item.produto.preco | currency: 'BRL'}}</div>
@@ -40,7 +42,7 @@
     </div>
 
     <div class="total" *ngIf="order.carrinho">
-        <span>Valor total da comprar: </span>
+        <span>Valor total da compra: </span>
         <h1>{{order.total | currency : 'BRL'}}</h1>
     </div>
 </div>

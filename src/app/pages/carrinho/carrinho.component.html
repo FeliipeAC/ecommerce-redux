@@ -6,7 +6,7 @@
                 {{(carrinho$ | async).items.length}}
                 {{(carrinho$ | async).items.length > 1 ? 'itens' : 'item'}} no carinho</span>
 
-            <button mat-button (click)="clear()" class="fadeInRight">
+            <button type="button" mat-button (click)="clear()" class="fadeInRight">
                 <mat-icon>clear_all</mat-icon>
                 Esvaziar carrinho
             </button>
@@ -15,10 +15,10 @@
         </app-table-items-cart>
 
         <div class="bt-actions">
-            <a mat-button routerLink="/home" class="fadeInRight">
+            <a type="button" mat-button routerLink="/home" class="fadeInRight">
                 Voltar para loja
             </a>
-            <a mat-flat-button color="primary" class="fadeInRight" routerLink="/checkout">
+            <a type="button" mat-flat-button color="primary" class="fadeInRight" routerLink="/checkout">
                 Ir para checkout
             </a>
         </div>

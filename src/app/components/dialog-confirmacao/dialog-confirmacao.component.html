@@ -3,6 +3,10 @@
     <p [innerHTML]="data.texto"></p>
 </div>
 <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="false">Não</button>
-    <button mat-flat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Sim</button>
+    <button mat-button [mat-dialog-close]="false">
+        {{data.buttonText ? data.buttonText.cancelar : 'Não'}}
+    </button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>
+        {{data.buttonText ? data.buttonText.confirmar : 'Sim'}}
+    </button>
 </div>

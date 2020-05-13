@@ -36,7 +36,11 @@ export class CarrinhoComponent implements OnInit {
       width: '380px',
       data: {
         titulo: 'Excluir produto',
-        texto: 'Deseja realmente excluir o produto <b>' + element.produto.titulo + '</b> do carrinho?'
+        texto: 'Deseja realmente excluir o item <b>' + element.produto.titulo + '</b> do carrinho?',
+        buttonText: {
+          cancelar: 'Manter',
+          confirmar: 'Excluir'
+        }
       }
     })
       .beforeClosed()
@@ -45,7 +49,6 @@ export class CarrinhoComponent implements OnInit {
           this.store.dispatch(Remove(element));
         }
       });
-
   }
 
   clear(): void {
@@ -53,7 +56,11 @@ export class CarrinhoComponent implements OnInit {
       width: '380px',
       data: {
         titulo: 'Esvaziar carrinho',
-        texto: 'Deseja realmente excluir todos os produtos do carrinho ?'
+        texto: 'Deseja realmente <b>excluir todos os items</b> do carrinho ?',
+        buttonText: {
+          cancelar: 'Manter',
+          confirmar: 'Esvaziar carrinho'
+        }
       }
     })
       .beforeClosed()

@@ -20,7 +20,7 @@ export class ConfirmacaoComponent implements OnInit {
   ngOnInit(): void {
     this.order$.subscribe(order => {
       console.log('confirmação: ', order);
-    });
+    }).unsubscribe();
   }
 
 }

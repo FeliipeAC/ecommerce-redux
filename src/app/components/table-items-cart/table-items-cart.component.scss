@@ -3,11 +3,11 @@
     padding-bottom: 24px;
 }
 
-.mat-header-cell:not(.mat-column-produto) {
+.mat-header-cell:not(.mat-column-item) {
     justify-content: center;
 }
 
-.mat-cell:not(.mat-column-produto) {
+.mat-cell:not(.mat-column-item) {
     justify-content: center;
 }
 
@@ -20,7 +20,7 @@
     flex: 0 1 10%;
 }
 
-.mat-column-produto {
+.mat-column-item {
     flex: 0 1 55%;
 
     figure {
