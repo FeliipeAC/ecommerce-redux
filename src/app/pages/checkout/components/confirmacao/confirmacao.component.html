@@ -1,36 +1,46 @@
-<div class="content">
+<div class="content" *ngIf="(order$ | async) as order">
     <h2>Confirme seu pedido</h2>
 
-    <div class="box" *ngIf="(order$ | async) as order">
+    <div class="box">
         <div class="item">
             <h3>Cliente</h3>
-            <div class="field">
-                <span>Nome</span>
-                {{order.cliente?.nome}}
-            </div>
-            <div class="field">
-                <span>Sobrenome</span>
-                {{order.cliente?.sobrenome}}
-            </div>
-            <div class="field">
-                <span>Nascimento</span>
-                {{order.cliente?.nascimento}}
-            </div>
-            <div class="field">
-                <span>Celular</span>
-                {{order.cliente?.celular}}
-            </div>
-            <div class="field">
-                <span>Cidade</span>
-                {{order.cliente?.email}}
-            </div>
-            <div class="field">
-                <span>Sexo</span>
-                {{order.cliente?.sexo}}
+            {{order.cliente?.nome}} {{order.cliente?.sobrenome}} <br>
+            {{order.cliente?.sexo | titlecase }} <br>
+            {{order.cliente?.nascimento | mask: '00/00/0000'}} <br>
+            {{order.cliente?.email}} <br>
+            {{order.cliente?.celular | mask: '(00) 0 0000-0000'}}
+            <hr>
+            {{order.cliente?.endereco.rua}} {{order.cliente?.endereco.numero}}, {{order.cliente?.endereco.bairro}}
+            <br>
+            {{order.cliente?.endereco.cidade}}, {{order.cliente?.endereco.estado | uppercase}} <br>
+            {{order.cliente?.endereco.cep | mask: '00.000-000'}}
+        </div>
+        <div class="item">
+            <h3>Produtos</h3>
+            <div class="list" *ngIf="order.carrinho">
+                <div class="produto" *ngFor="let item of order.carrinho.items">
+                    <div>{{item.produto.titulo}}</div>
+                    <div>{{item.quantidade}}</div>
+                    <div>{{item.produto.preco | currency: 'BRL'}}</div>
+                </div>
             </div>
         </div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
+        <div class="item" *ngIf="order.pagamento">
+            <h3>Forma de pagamento</h3>
+
+            <ng-container *ngIf="order.pagamento.tipo === 'cartao'; else boleto">
+                Cartão de crédito<br>
+                em {{order.pagamento.numero}}x de {{order.pagamento.valor | currency: 'BRL'}}
+            </ng-container>
+            <ng-template #boleto>
+                Boleto báncario
+            </ng-template>
+
+        </div>
+    </div>
+
+    <div class="total" *ngIf="order.carrinho">
+        <span>Valor total da comprar: </span>
+        <h1>{{order.total | currency : 'BRL'}}</h1>
     </div>
 </div>

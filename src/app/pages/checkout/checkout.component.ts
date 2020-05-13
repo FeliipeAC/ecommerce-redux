@@ -154,13 +154,14 @@ export class CheckoutComponent implements OnInit {
       {
         cliente: newCliente,
         pagamento: pagamentoValue,
-        carrinho: newCarrinho
+        carrinho: newCarrinho,
+        total: 0
       }
     );
     console.log('newCarrinho: ', newCarrinho);
     console.log('order: ', order);
 
-    // this.orderStore.dispatch(AddOrder(order));
+    this.orderStore.dispatch(AddOrder(order));
   }
 
 }

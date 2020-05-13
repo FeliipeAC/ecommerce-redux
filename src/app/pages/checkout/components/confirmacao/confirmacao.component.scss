@@ -1,23 +1,84 @@
 .box {
     display: flex;
-    align-items: center;
 
     .item {
-        flex: 0 1 calc(50% - 12px);
+        display: flex;
+        flex-direction: column;
         margin-bottom: 24px;
+        color: #777d86;
 
-        &:nth-child(2n) {
-            margin-left: 12px;
-        }
-
-        &:nth-child(2n - 1) {
+        &:nth-child(1) {
+            flex: 0 1 calc(30% - 12px);
             margin-right: 12px;
         }
 
-        span {
-            font-size: 13px;
-            color: #777d86;
-            margin-bottom: 6px;
+        &:nth-child(2) {
+            flex: 0 1 calc(40% - 12px);
+            margin-right: 12px;
         }
+
+        &:nth-child(3) {
+            flex: 0 1 calc(30% - 12px);
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            flex: 0 1 33.33%;
+            margin-bottom: 16px;
+
+            span {
+                font-size: 13px;
+                color: #777d86;
+                margin-bottom: 6px;
+            }
+        }
+
+        .list {
+
+            .produto {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(0, 0, 0, .12);
+
+                &:first-of-type {
+                    padding-top: 0;
+                }
+
+                >div {
+                    padding: 0 5px;
+
+                    &:nth-child(1) {
+                        flex: 0 1 calc(60% - 6px);
+                        margin-right: 6px;
+                    }
+
+                    &:nth-child(2) {
+                        flex: 0 1 calc(10% - 6px);
+                        margin-right: 6px;
+                    }
+
+                    &:nth-child(3) {
+                        flex: 0 1 calc(30% - 6px);
+                    }
+                }
+
+
+            }
+        }
+
+
+    }
+}
+
+.total {
+    width: 100%;
+    text-align: right;
+    padding: 36px 0;
+
+    h1 {
+        margin: 6px 0 0 0;
     }
 }

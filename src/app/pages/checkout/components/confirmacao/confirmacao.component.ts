@@ -15,7 +15,6 @@ export class ConfirmacaoComponent implements OnInit {
 
   constructor(private orderStore: Store<OrderStore>, ) {
     this.order$ = this.orderStore.pipe(select('order'));
-
   }
 
   ngOnInit(): void {

@@ -30,11 +30,14 @@
         </ng-template>
     </mat-horizontal-stepper>
     <div class="bt-actions">
-        <button mat-flat-button routerLink="/carrinho" class="fadeInRight" *ngIf="stepper.selectedIndex === 0">Voltar
-            para carrinho</button>
-        <button mat-flat-button (click)="stepper.previous()" class="fadeInRight"
-            *ngIf="stepper.selectedIndex !== 0">Voltar</button>
-        <button mat-flat-button class="fadeInRight" color="primary" (click)="avancar()">Avançar</button>
+        <button mat-flat-button routerLink="/carrinho" class="fadeInRight" *ngIf="stepper.selectedIndex === 0">
+            Retornar para carrinho</button>
+        <button mat-flat-button (click)="stepper.previous()" class="fadeInRight" *ngIf="stepper.selectedIndex !== 0">
+            Retornar
+        </button>
+        <button mat-flat-button class="fadeInRight" color="primary" (click)="avancar()">
+            {{stepper.selectedIndex !== 2 ? 'Prosseguir' : 'Finalizar pedido'}}
+        </button>
     </div>
 
 </div>

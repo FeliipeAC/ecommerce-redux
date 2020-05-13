@@ -78,7 +78,7 @@ export function carrinhoReducer(state = new CarrinhoModel(), action: ActionModel
 
 }
 
-function calculateTotal(items: { produto: ProdutoModel; quantidade: number }[]): number {
+function calculateTotal(items: ItemCarrinhoModel[]): number {
     let total = 0;
     items.forEach(item => {
         total += item.quantidade * item.produto.preco;
